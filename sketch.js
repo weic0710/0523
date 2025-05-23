@@ -2,6 +2,7 @@ let video;
 let facemesh;
 let predictions = [];
 const points = [409,270,269,267,0,37,39,40,185,61,146,91,181,84,17,314,405,321,375,291];
+const points2 = [76,77,90,180,85,16,315,404,320,307,306,408,304,303,302,11,72,73,74,184];
 
 function setup() {
   createCanvas(640, 480);
@@ -38,6 +39,17 @@ function draw() {
     for (let i = 0; i < points.length - 1; i++) {
       let a = keypoints[points[i]];
       let b = keypoints[points[i + 1]];
+      if (a && b) {
+        line(a[0], a[1], b[0], b[1]);
+      }
+    }
+    // 串接 points2 陣列的點
+    stroke(255, 0, 0);
+    strokeWeight(2);
+    noFill();
+    for (let i = 0; i < points2.length - 1; i++) {
+      let a = keypoints[points2[i]];
+      let b = keypoints[points2[i + 1]];
       if (a && b) {
         line(a[0], a[1], b[0], b[1]);
       }
